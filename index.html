@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Jiffy Studios</title>
+    <link rel="shortcut icon" href="/favicon.ico?v=2"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+    <script src="js/vendor/modernizr.custom.32838.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 9]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
+    improve your experience.</p>
+<![endif]-->
+
+<img id="background-img" src="img/coffee.jpg" alt="" style="display: none" />
+
+<div style="position: absolute; top: 50px; left: 50px; color: ghostwhite; box-sizing: content-box; ">
+    <div style="line-height: 1em; font-family: 'Racing Sans One', cursive; font-size: 500%; text-shadow: 0px 3px 0px #fff, -9px 8px 0px rgba(0,0,0,0.5);">
+        Jiffy <img src="img/jiffyman-square-70x64.png" style="background-color: ghostwhite"/>
+    </div>
+    <div style="line-height: 1em; font-family: 'Carrois Gothic SC', sans-serif; font-size: 300%; text-shadow: 0px 1px 0px #fff, -3px 5px 0px rgba(0,0,0,0.5);">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Studios
+    </div>
+</div>
+
+<div style="position: absolute; bottom: 50px; right: 50px;">
+    <a href="mailto:info@jiffystudios.com" style="color: ghostwhite; font-family: 'Open Sans', sans-serif;">Contact</a>
+</div>
+
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script>
+    $(function() {
+        var backgroundFunctions = [
+            function() {
+                // Coffee mug on red background
+                if(Modernizr.backgroundsize) {
+                    // CSS3 compatible browser
+                    $("#background-img").css({"display": "none"});
+                    $("body").css({
+                        "background": "#222222 url(img/coffee.jpg) no-repeat center center fixed",
+                        "-webkit-background-size": "cover",
+                        "-moz-background-size": "cover",
+                        "-o-background-size": "cover",
+                        "background-size": "cover"
+                    });
+                } else {
+                    // Old browser
+                    $("#background-img").attr("src", "img/coffee.jpg");
+                    $("#background-img").css({"display": "block"});
+                }
+            },
+            function() {
+                // Person writing in a notebook
+                if(Modernizr.backgroundsize) {
+                    // CSS3 compatible browser
+                    $("#background-img").css({"display": "none"});
+                    $("body").css({
+                        "background": "#222222 url(img/writing-notes.jpg) no-repeat center center fixed",
+                        "-webkit-background-size": "cover",
+                        "-moz-background-size": "cover",
+                        "-o-background-size": "cover",
+                        "background-size": "cover"
+                    });
+                } else {
+                    // Old browser
+                    $("#background-img").attr("src", "img/writing-notes.jpg");
+                    $("#background-img").css({"display": "block"});
+                }
+            },
+            function() {
+                // Laptop sitting on a wooden table
+                if(Modernizr.backgroundsize) {
+                    // CSS3 compatible browser
+                    $("#background-img").css({"display": "none"});
+                    $("body").css({
+                        "background": "#222222 url(img/laptop-table.jpg) no-repeat center center fixed",
+                        "-webkit-background-size": "cover",
+                        "-moz-background-size": "cover",
+                        "-o-background-size": "cover",
+                        "background-size": "cover"
+                    });
+                } else {
+                    // Old browser
+                    $("#background-img").attr("src", "img/laptop-table.jpg");
+                    $("#background-img").css({"display": "block"});
+                }
+            }
+        ];
+
+        // [1] Load initial background
+        var backgroundIndex = Math.floor(Math.random() * backgroundFunctions.length);
+        backgroundFunctions[backgroundIndex]();
+
+        // [2] Pre-load the remaining background images
+        var backgroundImages = ["img/coffee.jpg", "img/writing-notes.jpg", "img/laptop-table.jpg"];
+        $(backgroundImages).each(function () {
+            $("<img />").attr("src", this).appendTo("body").hide();
+        });
+
+        // [3] Setup background process to cycle through a new background image every 5 seconds.
+        setInterval(function() {
+            backgroundIndex = (backgroundIndex + 1 >= backgroundFunctions.length) ? 0 : backgroundIndex + 1;
+            backgroundFunctions[backgroundIndex]();
+        }, 5000);
+    });
+</script>
+</body>
+</html>
