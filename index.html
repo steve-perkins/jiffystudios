@@ -8,6 +8,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/carousel.css">
     <script src="js/vendor/modernizr.custom.32838.min.js"></script>
 </head>
 <body>
@@ -19,6 +21,7 @@
 
 <img id="background-img" src="img/coffee.jpg" alt="" style="display: none" />
 
+<!-- Logo -->
 <div style="position: absolute; top: 50px; left: 50px; color: ghostwhite; box-sizing: content-box; ">
     <div style="line-height: 1em; font-family: 'Racing Sans One', cursive; font-size: 500%; text-shadow: 0px 3px 0px #fff, -9px 8px 0px rgba(0,0,0,0.5);">
         Jiffy <img src="img/jiffyman-square-70x64.png" style="background-color: ghostwhite"/>
@@ -28,85 +31,120 @@
     </div>
 </div>
 
-<div style="position: absolute; bottom: 50px; right: 50px;">
-    <a href="mailto:info@jiffystudios.com" style="color: ghostwhite; font-family: 'Open Sans', sans-serif; text-decoration: none;">Contact</a>
+<!-- Main carousel -->
+<div id="carouselContainer" class="container" style="display: none">
+    <div class="row" style="margin-top: 200px">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div id="myCarousel" class="carousel slide" data-interval="false">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="img/black.jpg" alt="First slide" style="opacity:0.9; filter:alpha(opacity=90); /* For IE8 and earlier */">
+                            <div class="container">
+                            <div class="carousel-caption">
+                                <h1>An App Playground</h1>
+                                <p>This site is run by <a href="http://steveperkins.net" target="_blank">Steve Perkins</a>, an enterprise Java developer and
+                                    author of the book
+                                    <a href="http://www.amazon.com/gp/product/184951920X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=184951920X&linkCode=as2&tag=stevepernet02-20" target="_blank">Hibernate Search by Example</a>.</p>
+                                <p>In my personal time, I like to tinker with polyglot technologies
+                                    that I might not get a chance to use extensively at work.  Things like Go, Clojure, and Node.js on the server-side.  Advanced
+                                    JavaScript on the client side.  Mobile apps, etc.</p>
+                                <p>So basically, JiffyStudios.com is the hipster alter-ego for StevePerkins.net.  It hosts those learning examples that are polished enough
+                                    to show publicly.  Click left and right through this carousel to review the publicly available sites and apps.</p>
+                                <!--<p><a class="btn btn-large btn-primary" href="#">Sign up today</a></p>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="img/black.jpg" alt="Second slide" style="opacity:0.9; filter:alpha(opacity=90); /* For IE8 and earlier */">
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Domain Jiffy</h1>
+                                <p><img src="img/domainjiffy.jpg" style="width: 50%; height: 50%; float: right; margin: 10px;"/>
+                                    A tool for coming up with domain name ideas.  More customizable than other generators, letting
+                                    you mix and match "elements" such as word synonyms, common words, etc.</p>
+                                <p>This site gave me a chance to work with <a href="http://nodejs.org/" target="_blank">Node.js</a> and
+                                    <a href="http://expressjs.com/" target="_blank">Express</a>, drag-and-drop with <a href="http://jqueryui.com/"  target="_blank">jQuery UI</a>,
+                                    and some of the same language processing techniques that I researched while writing my
+                                    <a href="http://www.amazon.com/gp/product/184951920X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=184951920X&linkCode=as2&tag=stevepernet02-20" target="_blank">Hibernate Search book</a>.</p>
+                                <p><a class="btn btn-large btn-primary" href="http://domainjiffy.com" target="_blank">Visit DomainJiffy.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- About -->
+<div style="position: absolute; bottom: 100px; right: 50px;">
+    <a id="aboutLink" href="#" style="color: ghostwhite; font-family: 'Open Sans', sans-serif; text-decoration: none; font-size: 150%;">About Jiffy Studios</a>
+</div>
+
+<!-- Contact -->
+<div style="position: absolute; bottom: 50px; right: 50px;">
+    <a href="mailto:info@jiffystudios.com" style="color: ghostwhite; font-family: 'Open Sans', sans-serif; text-decoration: none; font-size: 150%;">Contact</a>
+</div>
+
+
 <script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
 <script>
+    // Background image handling
     $(function() {
-        var backgroundFunctions = [
-            function() {
-                // Coffee mug on red background
-                if(Modernizr.backgroundsize) {
-                    // CSS3 compatible browser
-                    $("#background-img").css({"display": "none"});
-                    $("body").css({
-                        "background": "#222222 url(img/coffee.jpg) no-repeat center center fixed",
-                        "-webkit-background-size": "cover",
-                        "-moz-background-size": "cover",
-                        "-o-background-size": "cover",
-                        "background-size": "cover"
-                    });
-                } else {
-                    // Old browser
-                    $("#background-img").attr("src", "img/coffee.jpg");
-                    $("#background-img").css({"display": "block"});
-                }
-            },
-            function() {
-                // Person writing in a notebook
-                if(Modernizr.backgroundsize) {
-                    // CSS3 compatible browser
-                    $("#background-img").css({"display": "none"});
-                    $("body").css({
-                        "background": "#222222 url(img/writing-notes.jpg) no-repeat center center fixed",
-                        "-webkit-background-size": "cover",
-                        "-moz-background-size": "cover",
-                        "-o-background-size": "cover",
-                        "background-size": "cover"
-                    });
-                } else {
-                    // Old browser
-                    $("#background-img").attr("src", "img/writing-notes.jpg");
-                    $("#background-img").css({"display": "block"});
-                }
-            },
-            function() {
-                // Laptop sitting on a wooden table
-                if(Modernizr.backgroundsize) {
-                    // CSS3 compatible browser
-                    $("#background-img").css({"display": "none"});
-                    $("body").css({
-                        "background": "#222222 url(img/laptop-table.jpg) no-repeat center center fixed",
-                        "-webkit-background-size": "cover",
-                        "-moz-background-size": "cover",
-                        "-o-background-size": "cover",
-                        "background-size": "cover"
-                    });
-                } else {
-                    // Old browser
-                    $("#background-img").attr("src", "img/laptop-table.jpg");
-                    $("#background-img").css({"display": "block"});
-                }
+        var backgroundImages = ["img/coffee.jpg", "img/writing-notes.jpg", "img/laptop-table.jpg", "img/blurred_lines.jpg", "img/top_view.jpg"];
+        var backgroundFunction = function(image) {
+            if(Modernizr.backgroundsize) {
+                // CSS3 compatible browser
+                $("#background-img").css({"display": "none"});
+                $("body").css({
+                    "background": "#222222 url(" + image + ") no-repeat center center fixed",
+                    "-webkit-background-size": "cover",
+                    "-moz-background-size": "cover",
+                    "-o-background-size": "cover",
+                    "background-size": "cover"
+                });
+            } else {
+                // Old browser
+                $("#background-img").attr("src", image);
+                $("#background-img").css({"display": "block"});
             }
-        ];
+        }
 
         // [1] Load initial background
-        var backgroundIndex = Math.floor(Math.random() * backgroundFunctions.length);
-        backgroundFunctions[backgroundIndex]();
+        var backgroundIndex = Math.floor(Math.random() * backgroundImages.length);
+        backgroundFunction( backgroundImages[backgroundIndex] );
 
         // [2] Pre-load the remaining background images
-        var backgroundImages = ["img/coffee.jpg", "img/writing-notes.jpg", "img/laptop-table.jpg"];
         $(backgroundImages).each(function () {
             $("<img />").attr("src", this).appendTo("body").hide();
         });
 
-        // [3] Setup background process to cycle through a new background image every 5 seconds.
+        // [3] Setup background process to cycle through a new background image every 10 seconds.
         setInterval(function() {
-            backgroundIndex = (backgroundIndex + 1 >= backgroundFunctions.length) ? 0 : backgroundIndex + 1;
-            backgroundFunctions[backgroundIndex]();
-        }, 5000);
+            backgroundIndex = (backgroundIndex + 1 >= backgroundImages.length) ? 0 : backgroundIndex + 1;
+            backgroundFunction( backgroundImages[backgroundIndex] );
+        }, 10000);
+    });
+
+    // "About" toggling
+    $(function() {
+        $("#aboutLink").click(function() {
+            $("#carouselContainer").slideToggle("slow", function() {
+                // Animation complete.
+            });
+        });
     });
 </script>
 <!-- AddThis Smart Layers BEGIN -->
