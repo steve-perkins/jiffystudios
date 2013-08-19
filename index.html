@@ -61,7 +61,7 @@
                                 <p>In my personal time, I like to tinker with polyglot technologies
                                     that I might not get a chance to use extensively at work.  Things like Go, Clojure, and Node.js on the server-side.  Advanced
                                     JavaScript on the client side.  Mobile apps, etc.</p>
-                                <p>So basically, JiffyStudios.com is the hipster alter-ego for StevePerkins.net.  It hosts those learning examples that are polished enough
+                                <p>So basically, JiffyStudios.com is the "hipster" alter-ego of StevePerkins.net.  It hosts those learning examples that are polished enough
                                     to show publicly.  Click left and right through this carousel to review the publicly available sites and apps.</p>
                                 <!--<p><a class="btn btn-large btn-primary" href="#">Sign up today</a></p>-->
                             </div>
@@ -97,7 +97,9 @@
 
 <!-- About -->
 <div style="position: absolute; bottom: 100px; right: 50px;">
-    <a id="aboutLink" href="#" style="color: ghostwhite; font-family: 'Open Sans', sans-serif; text-decoration: none; font-size: 150%;">About Jiffy Studios</a>
+    <a id="aboutLink" href="#" style="color: ghostwhite; font-family: 'Open Sans', sans-serif; text-decoration: none; font-size: 150%;">
+        <span id="carouselCloseIcon" class="glyphicon glyphicon-remove" style="display: none;"></span> About Jiffy Studios
+    </a>
 </div>
 
 <!-- Contact -->
@@ -149,9 +151,8 @@
     // "About" toggling
     $(function() {
         $("#aboutLink").click(function() {
-            $("#carouselContainer").slideToggle("slow", function() {
-                // Animation complete.
-            });
+            $("#carouselContainer").slideToggle("slow", function() {});
+            $("#carouselCloseIcon").slideToggle("slow", function() {});
         });
     });
 </script>
