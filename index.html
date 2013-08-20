@@ -8,7 +8,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Carrois+Gothic+SC' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/carousel.css">
     <script src="js/vendor/modernizr.custom.32838.min.js"></script>
     <style>
@@ -151,8 +151,8 @@
     // "About" toggling
     $(function() {
         $("#aboutLink").click(function() {
+            $("#carouselCloseIcon").slideToggle("fast", function() {});
             $("#carouselContainer").slideToggle("slow", function() {});
-            $("#carouselCloseIcon").slideToggle("slow", function() {});
         });
     });
 </script>
